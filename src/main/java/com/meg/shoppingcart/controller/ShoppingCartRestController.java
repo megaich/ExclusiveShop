@@ -43,6 +43,14 @@ public class ShoppingCartRestController {
 
         return ResponseEntity.ok(productList);
     }
+    
+    @GetMapping(value = "/getProduct/{productName}")
+    public ResponseEntity<Product> getOrderDetails(@PathVariable String productName) {
+
+        Product product = productService.getProduct(productName);
+        return ResponseEntity.ok(product);
+    }
+    
 
     @GetMapping(value = "/getOrder/{orderId}")
     public ResponseEntity<Order> getOrderDetails(@PathVariable int orderId) {
