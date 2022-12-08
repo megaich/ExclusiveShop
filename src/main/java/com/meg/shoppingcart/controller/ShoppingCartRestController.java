@@ -89,5 +89,34 @@ public class ShoppingCartRestController {
 
         return ResponseEntity.ok(responseOrderDTO);
     }
+    
+    
+    /**
+     * Customer API code for fetching customers, Registering Customers
+     */
+    
+    @GetMapping(value = "/getCustomers")
+    public ResponseEntity<List<Customer>> getAllCustomers() {
+
+        List<Customer> customerList = customerService.getAllCustomers();
+
+        return ResponseEntity.ok(customerList);
+    }
+    
+    
+    @GetMapping(value = "/getCustomer/{name}")
+    public ResponseEntity<Customer> getCustomerByName(@PathVariable String name) {
+
+    	Customer customer = customerService.getCustomerByName(name);
+        return ResponseEntity.ok(customer);
+    }
+    
+    @PostMapping("/registerCustomer")
+    public ResponseEntity<Customer> registerCustomer(@RequestBody Customer customer) {
+    	customerService.saveCustomer(customer);
+    	return ResponseEntity.ok(customer);
+    }
+    
+    
 
 }
