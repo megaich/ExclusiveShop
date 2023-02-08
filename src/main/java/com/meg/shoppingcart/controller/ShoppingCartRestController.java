@@ -27,7 +27,6 @@ public class ShoppingCartRestController {
     private ProductService productService;
     private CustomerService customerService;
 
-
     public ShoppingCartRestController(OrderService orderService, ProductService productService, CustomerService customerService) {
         this.orderService = orderService;
         this.productService = productService;
@@ -50,7 +49,6 @@ public class ShoppingCartRestController {
         Product product = productService.getProduct(productName);
         return ResponseEntity.ok(product);
     }
-    
 
     @GetMapping(value = "/getOrder/{orderId}")
     public ResponseEntity<Order> getOrderDetails(@PathVariable int orderId) {
@@ -58,7 +56,6 @@ public class ShoppingCartRestController {
         Order order = orderService.getOrderDetail(orderId);
         return ResponseEntity.ok(order);
     }
-
 
     @PostMapping("/placeOrder")
     public ResponseEntity<ResponseOrderDTO> placeOrder(@RequestBody OrderDTO orderDTO) {
@@ -89,8 +86,7 @@ public class ShoppingCartRestController {
 
         return ResponseEntity.ok(responseOrderDTO);
     }
-    
-    
+
     /**
      * Customer API code for fetching customers, Registering Customers
      */
@@ -102,8 +98,7 @@ public class ShoppingCartRestController {
 
         return ResponseEntity.ok(customerList);
     }
-    
-    
+
     @GetMapping(value = "/getCustomer/{name}")
     public ResponseEntity<Customer> getCustomerByName(@PathVariable String name) {
 
@@ -116,7 +111,5 @@ public class ShoppingCartRestController {
     	customerService.saveCustomer(customer);
     	return ResponseEntity.ok(customer);
     }
-    
-    
 
 }

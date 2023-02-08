@@ -17,6 +17,7 @@ public class Product {
     @GeneratedValue
     private int id;
     private String name;
+    private String image;
     private int availableQuantity;
     private float price;
 
@@ -34,6 +35,14 @@ public class Product {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 
     public int getAvailableQuantity() {
@@ -57,6 +66,7 @@ public class Product {
         return "Product{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
+                ", image='" + image + '\'' +
                 ", availableQuantity=" + availableQuantity +
                 ", price=" + price +
                 '}';
