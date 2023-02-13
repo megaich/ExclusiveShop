@@ -14,7 +14,7 @@
 <div class="container-fluid p-5 text-center">
     <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">Exclusive Shop</a>
+            <a class="navbar-brand" href="/">Exclusive Shop</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -22,8 +22,8 @@
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 </ul>
 
-                <form class="d-flex">
-                    <input class="form-control me-2" type="search" placeholder="Products..." aria-label="Search">
+                <form class="d-flex" name="searchForm" th:action="@{/productSearch}" method="post">
+                    <input class="form-control me-2" type="search" id="productName" name="productName" placeholder="Products..." aria-label="Search">
                     <button class="btn btn-primary" type="submit" data-toggle="tooltip" title="Search">Search</button>
                 </form>
                 <button class="btn btn-primary ms-2" type="button" data-toggle="tooltip" title="Cart" onclick="location.href='/cart'"><i class="bi bi-cart"></i></button>

@@ -42,6 +42,13 @@ public class CartService {
 		}
 	}
 
+	public BigDecimal getCount() {
+		return items.entrySet().stream()
+				.map(entry -> BigDecimal.valueOf(entry.getValue()))
+				.reduce(BigDecimal::add)
+				.orElse(BigDecimal.ZERO);
+	}
+
 	public BigDecimal getTotal() {
 		return items.entrySet().stream()
 				.map(entry -> BigDecimal.valueOf(entry.getKey().getPrice() * entry.getValue()))

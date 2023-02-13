@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
 @RequestMapping
@@ -26,6 +27,7 @@ public class CartController {
 	public String getCart(Model model) {
 		model.addAttribute("page", "Cart");
 		model.addAttribute("items", cartService.getItems());
+		model.addAttribute("count", cartService.getCount());
 		model.addAttribute("total", cartService.getTotal());
 		return "cart";
 	}
@@ -35,5 +37,12 @@ public class CartController {
 		cartService.addItem(productService.getProduct(productId));
 		model.addAttribute("mode", "add");
 		return getCart(model);
+	}
+
+	@PostMapping(value = "/cart/remove")
+	public String removeFromCart(Model model, @ModelAttribute("productId") Integer productId) {
+		cartService.removeItem(productService.getProduct(productId));
+		model.addAttribute("mode", "remove");
+		return "redirect:/cart";
 	}
 }

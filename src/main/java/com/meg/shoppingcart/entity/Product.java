@@ -10,9 +10,6 @@ import javax.persistence.Table;
 @Table
 public class Product {
 
-    public Product() {
-    }
-
     @Id
     @GeneratedValue
     private int id;
@@ -59,6 +56,23 @@ public class Product {
 
     public void setPrice(float price) {
         this.price = price;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Product product = (Product) o;
+        return id == product.id;
+    }
+
+    @Override
+    public int hashCode() {
+        //return id.hashCode();
+        final int prime = 31;
+        int result = 1;
+        return (prime * result + id);
     }
 
     @Override
